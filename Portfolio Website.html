@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER@PORTFOLIO:~</title>
+    <!-- Using IBM Plex Mono for clean, readable monospace -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- CRT Scanline & Flicker Effects -->
+    <div class="crt-overlay"></div>
+    <div class="flicker-overlay"></div>
+
+    <!-- Boot Sequence Screen -->
+    <div id="boot-screen">
+        <div id="boot-text"></div>
+        <span class="blinking-cursor">_</span>
+    </div>
+
+    <!-- Main Content (Hidden until boot completes) -->
+    <div id="main-content" class="hidden">
+        
+        <!-- Sticky Terminal Navigation -->
+        <header id="nav-header">
+            <div class="nav-container">
+                <div class="nav-prompt">root@system:~$ cd /sections</div>
+                <nav>
+                    <a href="#home" class="nav-link">[HOME]</a>
+                    <a href="#experience" class="nav-link">[EXPERIENCE]</a>
+                    <a href="#portfolio" class="nav-link">[PORTFOLIO]</a>
+                    <a href="#skills" class="nav-link">[SKILLS]</a>
+                    <a href="#projects" class="nav-link">[PROJECTS]</a>
+                    <a href="#contact" class="nav-link">[CONTACT]</a>
+                    <button id="sound-toggle" class="cmd-btn">[SOUND: ON]</button>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- SECTION: HOME -->
+            <section id="home">
+                <div class="section-prompt">> whoami</div>
+                <h1 id="hero-name" class="neon-green"></h1>
+                <h2 id="hero-role" class="amber"></h2>
+                <p id="hero-bio" class="soft-gray"></p>
+            </section>
+
+            <!-- SECTION: EXPERIENCE -->
+            <section id="experience">
+                <div class="section-prompt">> load experience --list</div>
+                <div class="ascii-divider">--------------------------------------------------</div>
+                
+                <article class="exp-entry">
+                    <h3><span class="amber">[10.2022-ongoing]</span> Restoration, History of art Bachelors, TSAA</h3>
+                    <ul>
+                        <li>- 50% State sponosored grant.</li>
+                        <li>- 100% University sponsored financing.</li>
+                        <li>- 3.8 GPA</li>
+                    </ul>
+                </article>
+                
+                <article class="exp-entry">
+                    <h3><span class="amber">[3.12.2025-5.12.2025]</span> Ancient pagan symbolism in later Christian visual tradition</h3>
+                    <ul>
+                        <li>- Authored a scientific work.</li>
+                        <li>- Presented it at the International Scientific Conference hosted by the faculty of Restoration, History of art.</li>
+                    </ul>
+                </article>
+                <div class="ascii-divider">--------------------------------------------------</div>
+            </section>
+
+            <!-- SECTION: PORTFOLIO -->
+            <section id="portfolio">
+                <div class="section-prompt">> ls ./portfolio</div>
+                <p class="soft-gray">// Select an executable to view</p>
+                <ul class="interactive-list">
+                    <li><button class="portfolio-item" data-id="1">> select project_1.exe</button></li>
+                    <li><button class="portfolio-item" data-id="2">> select project_2.exe</button></li>
+                    <li><button class="portfolio-item" data-id="3">> select project_3.exe</button></li>
+                </ul>
+            </section>
+
+            <!-- SECTION: SKILLS -->
+            <section id="skills">
+                <div class="section-prompt">> run skills.exe</div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="amber">LANGUAGE</h3>
+                        <div class="skill-row"><span>GEORGIAN</span> <span class="neon-green">[██████████] C2</span></div>
+                        <div class="skill-row"><span>ENGLISH</span> <span class="neon-green">[██████████] C2</span></div>
+                        <div class="skill-row"><span>GERMAN</span> <span class="neon-green">[████████░░] B2</span></div>
+                        <div class="skill-row"><span>RUSSIAN</span> <span class="neon-green">[██████░░░░] A2</span></div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="amber">TECHNICAL</h3>
+                        <div class="skill-row"><span>Autodesk Fusion 360</span> <span class="neon-green">[█████████░] 90%</span></div>
+                        <div class="skill-row"><span>Cura</span> <span class="neon-green">[██████████] 99%</span></div>
+                        <div class="skill-row"><span>Photoshop</span> <span class="neon-green">[███████░░░] 75%</span></div>
+                        <div class="skill-row"><span>Blender</span> <span class="neon-green">[█████░░░░░] 50%</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: PROJECTS -->
+            <section id="projects">
+                <div class="section-prompt">> ls ./projects</div>
+                
+                <div class="text-project">
+                    <h3 class="neon-green">> compendium_caucasia</h3>
+                    <p class="soft-gray">An open source website dedicated to archiving the many different symbols rooted in Caucasian folklore.</p>
+                    <p><span class="amber">Used:</span> SCSS, HTML5, Vanilla JS</p>
+                    <a href="https://github.com/fatsnake1/CaucasusLexicon" target="_blank" class="cmd-link">[VIEW: WEBSITE] <br></a>
+                    <a href="https://fatsnake1.github.io/CaucasusLexicon/" target="_blank" class="cmd-link">[VIEW: GITHUB_REPO]</a>
+                </div>
+            </section>
+
+            <!-- SECTION: CONTACT -->
+            <section id="contact">
+                <div class="section-prompt">> ./initiate_contact.sh</div>
+                <form id="contact-form" class="terminal-form">
+                    <div class="form-group">
+                        <label for="name">> enter_name:</label>
+                        <input type="text" id="name" required autocomplete="off" spellcheck="false">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">> enter_email:</label>
+                        <input type="email" id="email" required autocomplete="off" spellcheck="false">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">> message:</label>
+                        <textarea id="message" rows="3" required spellcheck="false"></textarea>
+                    </div>
+                    <button type="submit" class="cmd-btn">[ SEND_MESSAGE ]</button>
+                </form>
+                <div id="form-response" class="hidden neon-green"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- TUI Modal for Portfolio -->
+    <div id="tui-modal" class="modal-overlay hidden">
+        <div class="modal-window">
+            <div class="modal-header">
+                <span id="modal-title">project_view.exe</span>
+                <button id="modal-close">[X]</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img-placeholder">[ IMAGE DATA RENDERING... ]</div>
+                <h3 id="modal-proj-name" class="neon-green"></h3>
+                <p id="modal-proj-desc" class="soft-gray"></p>
+            </div>
+            <div class="modal-footer">
+                > PRESS [ESC] OR CLICK[X] TO CLOSE
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Bottom Command Line Input -->
+    <div id="cli-container">
+        <span class="cli-prompt">guest@portfolio:~$</span>
+        <input type="text" id="cli-input" autocomplete="off" spellcheck="false" placeholder="type 'help'...">
+    </div>
+
+    <footer>      
+ © 2026 Mikheil Juruli / მიხეილ ჟურული
+<br>
+This website is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License v3.0 as published by the Free Software Foundation.
+<br>
+This website is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
+<br>
+You can view the full license here: #
+<br>  
+Source code is available at: #</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
