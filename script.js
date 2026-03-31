@@ -190,11 +190,6 @@ document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
 });
 
-function closeModal() {
-    modal.classList.add('hidden');
-    playEnter();
-}
-
 // --- CONTACT FORM LOGIC ---
 const contactForm = document.getElementById('contact-form');
 const formResponse = document.getElementById('form-response');
