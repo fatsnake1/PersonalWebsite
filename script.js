@@ -150,7 +150,7 @@ const projectDatabase = {
         title: "project_3.exe", 
         name: "'Tsromi' church digital reconstruction", 
         desc: "A digitally rebuilt rendition of a historic Georgian church. Model was built according to the original era-specific schematics.", 
-        image: "/images/Tsromi.png"  
+        image: "images/Tsromi.png"  
     }
 };
 
