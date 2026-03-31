@@ -131,11 +131,27 @@ sections.forEach(sec => observer.observe(sec));
 const modal = document.getElementById('tui-modal');
 const modalCloseBtn = document.getElementById('modal-close');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
+const projectImage = document.getElementById('modal-project-image'); // ✅ Direct reference
 
 const projectDatabase = {
-    "1": { title: "project_1.exe", name: "Electric Fanduri", desc: "First ever magnetic pick-up electric rendition of the traditional Georgian Instrument Fanduri" },
-    "2": { title: "project_2.exe", name: "Plastic 22.", desc: "Schematics, models and build plans for an additively manufactured lever action rifle chambered in 22. LR" },
-    "3": { title: "project_3.exe", name: "'Tsromi' church digital reconstruction", desc: "A digitally rebuilt rendition of a historic Georgian church. Model was built according to the original era-specific schematics." }
+    "1": { 
+        title: "project_1.exe", 
+        name: "Electric Fanduri", 
+        desc: "First ever magnetic pick-up electric rendition of the traditional Georgian Instrument Fanduri", 
+        image: "path/to/your/image1.png"  
+    },
+    "2": { 
+        title: "project_2.exe", 
+        name: "Plastic 22.", 
+        desc: "Schematics, models and build plans for an additively manufactured lever action rifle chambered in 22. LR", 
+        image: "path/to/your/image2.jpg"  
+    },
+    "3": { 
+        title: "project_3.exe", 
+        name: "'Tsromi' church digital reconstruction", 
+        desc: "A digitally rebuilt rendition of a historic Georgian church. Model was built according to the original era-specific schematics.", 
+        image: "/images/Tsromi.png"  
+    }
 };
 
 portfolioItems.forEach(item => {
@@ -144,12 +160,34 @@ portfolioItems.forEach(item => {
         const id = e.target.getAttribute('data-id');
         const data = projectDatabase[id];
         
+        // 1. Update Text Elements
         document.getElementById('modal-title').innerText = data.title;
         document.getElementById('modal-proj-name').innerText = "> " + data.name;
-        document.getElementById('modal-proj-desc').innerText = data.desc;
+        document.getElementById('modal-proj-desc').innerHTML = data.desc;
         
+        // 2. LOAD THE IMAGE (Single function, not nested)
+        if(data.image && typeof data.image === 'string' && data.image.length > 5) {
+            projectImage.src = data.image;          // ✅ Set image source
+            projectImage.style.display = 'block';   // ✅ Show image
+        } else {
+            projectImage.style.display = 'none';    // Hide if no valid path
+        }
+
         modal.classList.remove('hidden');
     });
+});
+
+function closeModal() {
+    modal.classList.add('hidden');
+    playEnter();
+}
+
+modalCloseBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => {
+    if(e.target === modal) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
 });
 
 function closeModal() {
