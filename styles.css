@@ -1,6 +1,6 @@
 /* --- GLOBAL VARIABLES --- */
 :root {
-    --bg-color: #000000;
+    --bg-color: #030303;
     --neon-green: #f5f5f5;
     --amber: #FF3131;
     --soft-gray: #FF3131;
@@ -114,7 +114,7 @@ body {
 header {
     position: sticky;
     top: 0;
-    background: rgba(0, 0, 0, 1);
+    background: #030303;
     border-bottom: 1px solid var(--dark-gray);
     z-index: 100;
     backdrop-filter: blur(4px);

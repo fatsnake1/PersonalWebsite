@@ -1,5 +1,5 @@
 // --- STATE & CONFIG ---
-let soundEnabled = true;
+let soundEnabled = false;
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 // --- SOUND ENGINE ---
@@ -78,16 +78,17 @@ async function runBootSequence() {
 const heroData = {
     name: "MIKHEIL JURULI",
     role: "// Bio:",
-    bio: "> Studying history of art. Semiological reasearcher. 3D modelling & design enthusiast. My goal is to research the visual vocabularies of ancient cultures and implement it into modern design."
+    bio: "> Studying history of art. Semiological reasearcher. 3D modelling & design enthusiast. My goal is to research the visual vocabularies of ancient cultures and implement it into modern design.",
+    Email: "> mishojuruli@gmail.com"
 };
 
-async function typeText(elementId, text, speed = 40) {
+async function typeText(elementId, text, speed = 0.1) {
     const el = document.getElementById(elementId);
     el.innerHTML = '';
     for (let char of text) {
         el.innerHTML += char;
         if(soundEnabled) playKeystroke();
-        await new Promise(r => setTimeout(r, speed + Math.random() * 20));
+        await new Promise(r => setTimeout(r, speed + Math.random() * 0.1));
     }
 }
 
@@ -97,6 +98,8 @@ async function startHeroTyping() {
     await typeText('hero-role', heroData.role, 40);
     await new Promise(r => setTimeout(r, 200));
     await typeText('hero-bio', heroData.bio, 20);
+    await new Promise(r => setTimeout(r, 200));
+    await typeText('hero-Email', heroData.Email, 20);
 }
 
 // Start Boot
@@ -132,7 +135,7 @@ const portfolioItems = document.querySelectorAll('.portfolio-item');
 const projectDatabase = {
     "1": { title: "project_1.exe", name: "Electric Fanduri", desc: "First ever magnetic pick-up electric rendition of the traditional Georgian Instrument Fanduri" },
     "2": { title: "project_2.exe", name: "Plastic 22.", desc: "Schematics, models and build plans for an additively manufactured lever action rifle chambered in 22. LR" },
-    "3": { title: "project_3.exe", name: "Historic church digital reconstruction", desc: "A digitally rebuilt rendition of a ruined historic Georgian church. Model was built according to the original era-specific schematics." }
+    "3": { title: "project_3.exe", name: "'Tsromi' church digital reconstruction", desc: "A digitally rebuilt rendition of a historic Georgian church. Model was built according to the original era-specific schematics." }
 };
 
 portfolioItems.forEach(item => {
